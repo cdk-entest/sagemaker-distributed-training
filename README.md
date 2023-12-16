@@ -1,8 +1,19 @@
 ---
-title: getting started with distributed training on sagemaker
+title: sagemaker distributed training
+description: getting started with sagemaker distributed trainingi
 author: haimtran
-date: 15 DEC 2023
+publishedDate: 16/12/2023
+date: 2023-12-16
 ---
+
+## Introduction
+
+[GitHub](https://github.com/cdk-entest/sagemaker-distributed-training) this note show getting started with distributed training on SageMaker
+
+- Basic MPI
+- Pytorch DataParallel and DistributedDataParallel
+- SageMaker DistributedDataParallel Lib
+- Reference papers
 
 ## Basic MPI
 
