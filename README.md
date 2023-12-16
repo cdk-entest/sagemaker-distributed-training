@@ -436,7 +436,7 @@ estimator.fit()
 
 In case of 4 GPUs, the output look like this
 
-```txt
+```py
 Let's use 4 GPUs!
 NCCL version 2.17.1+cuda11.8
 algo-1:46:58 [0] configure_nvls_option:287 NCCL WARN NET/OFI Could not find ncclGetVersion symbol
@@ -753,6 +753,80 @@ pt_estimator = PyTorch(
 )
 
 pt_estimator.fit("s3://bucket/path/to/training/data")
+```
+
+Output should look like this
+
+```py
+host rank is 0
+NCCL version 2.17.1+cuda11.8
+algo-1:46:63 [0] configure_nvls_option:287 NCCL WARN NET/OFI Could not find ncclGetVersion symbol
+In Model: input size torch.Size([8, 5]) output size torch.Size([8, 2])
+<torch.cuda.device object at 0x7f51331f6ad0>
+NVIDIA A10G
+In Model: input size torch.Size([8, 5]) output size torch.Size([8, 2])
+<torch.cuda.device object at 0x7f51331f5c00>
+NVIDIA A10G
+In Model: input size torch.Size([8, 5]) output size torch.Size([8, 2])
+<torch.cuda.device object at 0x7f51331f6740>
+NVIDIA A10G
+In Model: input size torch.Size([6, 5]) output size torch.Size([6, 2])
+<torch.cuda.device object at 0x7f51331f6860>
+NVIDIA A10G
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+In Model: input size
+torch.Size([8, 5]) output size torch.Size([8, 2])
+<torch.cuda.device object at 0x7f51331f6800>
+NVIDIA A10G
+In Model: input size
+torch.Size([8, 5])
+In Model: input size
+In Model: input size torch.Size([6, 5])
+torch.Size([8, 5])
+output sizeoutput size torch.Size([8, 2])
+torch.Size([8, 2])
+<torch.cuda.device object at 0x7f51331f5f30>
+NVIDIA A10G
+output size torch.Size([6, 2])
+<torch.cuda.device object at 0x7f51331f68f0>
+NVIDIA A10G
+<torch.cuda.device object at 0x7f51331f67d0>
+NVIDIA A10G
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+In Model: input size torch.Size([8, 5]) output size torch.Size([8, 2])
+In Model: input size<torch.cuda.device object at 0x7f51331f66e0>
+NVIDIA A10G
+torch.Size([8, 5])
+output size
+In Model: input size
+torch.Size([8, 2])
+torch.Size([8, 5])
+<torch.cuda.device object at 0x7f51331f6a40>
+#011In Model: input size output sizetorch.Size([6, 5])
+NVIDIA A10G
+torch.Size([8, 2])output size torch.Size([6, 2])
+<torch.cuda.device object at 0x7f51331f6680>
+NVIDIA A10G
+<torch.cuda.device object at 0x7f51331f6a10>
+NVIDIA A10G
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+In Model: input size
+torch.Size([3, 5])#011In Model: input size
+output size torch.Size([3, 2])
+<torch.cuda.device object at 0x7f51331f68f0>
+NVIDIA A10G
+torch.Size([3, 5])
+output size torch.Size([3, 2])
+<torch.cuda.device object at 0x7f51331f67a0>
+In Model: input size
+NVIDIA A10G
+torch.Size([3, 5])
+output size torch.Size([3, 2])
+<torch.cuda.device object at 0x7f51331f5f30>
+NVIDIA A10G
+In Model: input size torch.Size([1, 5]) output size torch.Size([1, 2])
+<torch.cuda.device object at 0x7f51331f66e0>
+NVIDIA A10G
 ```
 
 ## Reference
