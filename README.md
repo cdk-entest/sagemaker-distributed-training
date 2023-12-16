@@ -558,7 +558,10 @@ Let create a similar model as before. Wrap model in DistributedDataParallel
 ```py
 device = "cuda"
 model = Model(input_size, output_size)
-model = torch.nn.parallel.DistributedDataParallel(model)
+# for single machine gpus
+model = torch.nn.DataParallel(model)
+# multiple machine gpus
+# model = torch.nn.parallel.DistributedDataParallel(model)
 model.to(device)
 ```
 
@@ -573,8 +576,6 @@ dist.init_process_group(
     rank=host_rank,
     world_size=world_size)
 ```
-
-> First wrap model in Data
 
 ```py
 import argparse
@@ -668,8 +669,10 @@ if __name__=="__main__":
     device = "cuda"
     # model
     model = Model(input_size, output_size)
-    # model = torch.nn.DataParallel(model)
-    model = torch.nn.parallel.DistributedDataParallel(model)
+    # single machine gpus
+    model = torch.nn.DataParallel(model)
+    # multiple machine gpus
+    # model = torch.nn.parallel.DistributedDataParallel(model)
     model.to(device)
     # gen data
     rand_loader = DataLoader(
@@ -763,3 +766,5 @@ pt_estimator.fit("s3://bucket/path/to/training/data")
 - [The Science Behind Amazon SM Distributed Training Engine](https://www.amazon.science/latest-news/the-science-of-amazon-sagemakers-distributed-training-engines)
 
 - [SMDDP Distributed Data Parallel Supported Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/distributed-data-parallel-support.html)
+
+- [SageMaker Pytorch MNIST](https://github.com/aws/amazon-sagemaker-examples/blob/main/sagemaker-python-sdk/pytorch_mnist/mnist.py)
